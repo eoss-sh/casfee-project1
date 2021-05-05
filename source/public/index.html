@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <title>Note App</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"
+    integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
   <script src="scripts/index.js" type="module"></script>
 
   <link rel="stylesheet" href="styles/index.css">
 </head>
-<body>
-<h1>Note App</h1>
 
+<body>
+  <main class="app">
+
+    <section class="controls">
+      <div class="add-new">
+        <button class="add-new">Add New</button>
+      </div>
+      <div class="complete">
+        <label for="completed">Erledigt</label>
+        <input type="checkbox" name="erledigt" id="completed">
+      </div>
+      <div class="sorting">
+        <input type="radio" name="sortierung" id="sort-date">
+        <label for="sort-date">Erstellungsdatum</label>
+        <input type="radio" name="sortierung" id="sort-importance">
+        <label for="sort-importance">Wichtigkeit</label>
+        <input type="radio" name="sortierung" id="sort-due">
+        <label for="sort-due">Fälligkeit</label>
+      </div>
+      <div class="layout">
+        <label for="layoutswitch">Layout Switch</label>
+        <input type="checkbox" name="layoutswitch" id="layoutswitch">
+      </div>
+    </section>
+
+    <section class="todos">
+      <article class="todo">
+        <div class="check"></div>
+        <div class="todo-content">
+          <small class="todo-duedate">01.05.2021</small>
+          <h2 class="todo-title">Titel of the ToDo</h2>
+          <p class="todo-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint culpa magnam distinctio
+            sapiente amet id animi, hic, possimus quibusdam soluta cumque quos fugiat necessitatibus qui ducimus et
+            quisquam, vel quod!</p>
+          <button class="todo-edit">Edit</button>
+        </div>
+      </article>
+      <article class="todo">
+        <div class="check"></div>
+        <div class="todo-content">
+          <small class="todo-duedate">01.05.2021</small>
+          <h2 class="todo-title">Titel of the ToDo</h2>
+          <p class="todo-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor temporibus nemo ad earum
+            beatae libero aliquid, recusandae ipsum error dolorum.</p>
+          <button class="todo-edit">Edit</button>
+        </div>
+      </article>
+      <article class="todo">
+        <div class="check"></div>
+        <div class="todo-content">
+          <small class="todo-duedate">01.05.2021</small>
+          <h2 class="todo-title">Titel of the ToDo</h2>
+          <p class="todo-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus doloribus
+            tenetur
+            possimus accusantium. Voluptates beatae illo ex perspiciatis voluptatibus dolorem laudantium qui amet
+            aliquid
+            sunt.</p>
+          <button class="todo-edit">Edit</button>
+        </div>
+      </article>
+    </section>
+
+  </main>
 </body>
+
 </html>
