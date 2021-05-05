@@ -1,3 +1,26 @@
 * {
     box-sizing: border-box;
 }
+
+.app {
+    max-width: 1090px;
+    margin: 0 auto;
+}
+
+.controls {
+    display: grid;
+    margin-bottom: 5%;
+    grid-template-rows: 40px;
+    grid-template-columns: 40% 10% 40% 10%;
+    background-color: aquamarine;
+}
+
+.todos {
+    background-color: burlywood;
+    padding: 5%;
+}
+
+.todo {
+    margin-bottom: 5%;
+}
+
