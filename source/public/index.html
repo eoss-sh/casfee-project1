@@ -12,6 +12,9 @@
 </head>
 
 <body>
+  <span class="add-new material-icons">
+    add_circle
+  </span>
   <main class="app">
     <section class="intro">
       <h1>Notes App</h1>
@@ -20,39 +23,44 @@
           <input type="checkbox" name="layoutswitch-darkmode" id="layoutswitch-darkmode">
           <div class="switch-fill"></div>
         </label>
-        <label class="switch layoutswitch-grid">
+        <label class="switch layoutswitch-grid"><span class="material-icons">
+            grid_view
+          </span>
           <input type="checkbox" name="layoutswitch-grid" id="layoutswitch-grid">
           <div class="switch-fill"></div>
         </label>
       </div>
     </section>
+
     <section class="controls">
-      <div class="add-new">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path
-            d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-        </svg>
-      </div>
-      <div class="complete">
-        <label for="completed">Erledigt</label>
-        <input type="checkbox" name="erledigt" id="completed">
-      </div>
+      <label class="switch filterdswitch-completed"><span class="material-icons">
+          check_circle
+        </span>
+        <input type="checkbox" name="filterdswitch-completed" id="filterdswitch-completed">
+        <div class="switch-fill"></div>
+      </label>
+      <span class="material-icons">
+        sort
+      </span>
       <div class="sorting">
-        <p class="sortint-text">Sortiern nach:</p>
-        <form action="" class="sort-form">
-          <label for="sort-date">
-            <input type="radio" name="sortierung" id="sort-date">
-            📅
-          </label>
-          <label for="sort-importance">
-            <input type="radio" name="sortierung" id="sort-importance">
-            🚨
-          </label>
-          <label for="sort-due">
-            <input type="radio" name="sortierung" id="sort-due">
-            🎯</label>
-        </form>
+        <input type="radio" name="sortierung" id="sort-date">
+        <label for="sort-date">
+          <span class="material-icons">
+            edit_calendar
+          </span>
+        </label>
+        <input type="radio" name="sortierung" id="sort-due">
+        <label for="sort-due">
+          <span class="material-icons">
+            event_available
+          </span>
+        </label>
+        <input type="radio" name="sortierung" id="sort-importance">
+        <label for="sort-importance">
+          <span class="material-icons">
+            priority_high
+          </span>
+        </label>
       </div>
     </section>
 
