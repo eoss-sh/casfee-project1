@@ -1,26 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,500;1,100&display=swap');
+
+/*Global Variables*/
+:root {
+
+}
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins;
 }
 
 .app {
     max-width: 1090px;
     margin: 0 auto;
 }
+/* **** INTRO Section with Titel and Layout-Switcher Checkboxes **** */
+.intro {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.layoutswitch-darkmode {
+ /*Scoped Variables to style darkmode*/
+    --width: 50px;
+    --heigth: calc(var(--width) / 2);
+    --border-radius: calc(var(--heigth) / 2);
+    --main-color: #000000;
+    --secondary-color: #ffffff;
+}
 
+.layoutswitch-grid {
+     /*Scoped Variables to style darkmode*/
+    --width: 50px;
+    --heigth: calc(var(--width) / 2);
+    --border-radius: calc(var(--heigth) / 2);
+    --main-color: #1255ff;
+    --secondary-color: #89aa45;
+}
+
+/* **** Controls Section with Filters **** */ 
 .controls {
     display: grid;
     margin-bottom: 5%;
     grid-template-rows: 40px;
-    grid-template-columns: 40% 10% 40% 10%;
+    grid-template-columns: 60% 20% 20%;
     background-color: aquamarine;
 }
 
-.todos {
-    background-color: burlywood;
-    padding: 5%;
-}
-
+/* **** ToDos Section with ToDos List and add new Todo **** */ 
 .todo {
-    margin-bottom: 5%;
+    background-color: burlywood;
+    padding: 2%;
+    margin-bottom: 2%;
 }
 
+/* **** FORMS And BUTTONS **** */
+
+/*Styling Checkbox Inputs*/
+.switch {
+    /*Styling*/
+    display: flex;
+    cursor: pointer;
+}
+/*General Styling to make Checkbox into Slider => style variables per Checkbox and also add switch class for genreal styles*/
+input[type="checkbox"]{
+   display: none;
+}
+input[type="checkbox"]:checked ~ .switch-fill {
+    background-color: var(--secondary-color);
+}
+input[type="checkbox"]:checked ~ .switch-fill::after {
+    left: calc(var(--width) - var(--heigth));
+    background-color: var(--main-color);
+}
+.switch-fill {
+    position: relative;
+    width: var(--width);
+    height: var(--heigth);
+    border-radius: var(--border-radius);
+    background-color: var(--main-color);
+    transition: all 0.2s;
+}
+.switch-fill::after {
+    font-family: 'Material Icons';
+    content: "e51c";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--heigth);
+    width: var(--heigth);
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
+
+/*Styling Buttons Sortierung*/
+.sorting {
+    display: flex;
+    align-items: center;
+}
+
+.sorting form {
+    height: 30px;
+}
+
+input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+}
+
+#radios label {
+	position: relative;
+    height: 30px;
+}

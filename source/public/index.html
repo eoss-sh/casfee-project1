@@ -6,34 +6,53 @@
   <title>Note App</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"
     integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script src="https://kit.fontawesome.com/1a87255f7d.js" crossorigin="anonymous"></script>
   <script src="scripts/index.js" type="module"></script>
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
   <main class="app">
-
+    <section class="intro">
+      <h1>Notes App</h1>
+      <div class="layoutswitches">
+        <label class="switch layoutswitch-darkmode"><span class="material-icons">dark_mode</span>
+          <input type="checkbox" name="layoutswitch-darkmode" id="layoutswitch-darkmode">
+          <div class="switch-fill"></div>
+        </label>
+        <label class="switch layoutswitch-grid">
+          <input type="checkbox" name="layoutswitch-grid" id="layoutswitch-grid">
+          <div class="switch-fill"></div>
+        </label>
+      </div>
+    </section>
     <section class="controls">
       <div class="add-new">
-        <button class="add-new"><i class="fas fa-plus-circle"></i></button>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+        </svg>
       </div>
       <div class="complete">
         <label for="completed">Erledigt</label>
         <input type="checkbox" name="erledigt" id="completed">
       </div>
       <div class="sorting">
-        <input type="radio" name="sortierung" id="sort-date">
-        <label for="sort-date">Erstellungsdatum</label>
-        <input type="radio" name="sortierung" id="sort-importance">
-        <label for="sort-importance">Wichtigkeit</label>
-        <input type="radio" name="sortierung" id="sort-due">
-        <label for="sort-due">Fälligkeit</label>
-      </div>
-      <div class="layout">
-        <label for="layoutswitch">Layout Switch</label>
-        <input type="checkbox" name="layoutswitch" id="layoutswitch">
+        <p class="sortint-text">Sortiern nach:</p>
+        <form action="" class="sort-form">
+          <label for="sort-date">
+            <input type="radio" name="sortierung" id="sort-date">
+            📅
+          </label>
+          <label for="sort-importance">
+            <input type="radio" name="sortierung" id="sort-importance">
+            🚨
+          </label>
+          <label for="sort-due">
+            <input type="radio" name="sortierung" id="sort-due">
+            🎯</label>
+        </form>
       </div>
     </section>
 
@@ -57,6 +76,7 @@
           <p class="todo-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor temporibus nemo ad earum
             beatae libero aliquid, recusandae ipsum error dolorum.</p>
           <button class="todo-edit">Edit</button>
+          <button class="todo-done">Done</button>
         </div>
       </article>
       <article class="todo">
