@@ -241,8 +241,14 @@ input[type="radio"]:checked + label {
 
 .todo-edit > .material-icons, .todo-done > .material-icons {
     color: var(--light-grey);
+    /* Set Pointer Event of Icon to none so that i does not get selected when listening for js click */
+    pointer-events: none;
 }
 
 .todo-edit:hover > .material-icons, .todo-done:hover > .material-icons {
     color: var(--dark);
+}
+
+.done{
+    text-decoration: underline;
 }
