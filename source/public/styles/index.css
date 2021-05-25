@@ -135,6 +135,35 @@ small, .text_small {font-size: 0.833rem;}
     background-color: var(--light-grey);
     padding: 2%;
     margin-bottom: 2%;
+    list-style: none;
+}
+
+/* *** Single Todo *** */
+/* Dates and Icons */
+.todo-content {
+    display: flex;
+    flex-flow: column;
+}
+.meta {
+    display: flex;
+    flex-flow: row;
+}
+.todo-meta {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.todo-meta:not(:last-child){
+    margin-right: 5%;
+}
+
+.todo-meta > .material-icons {
+    margin-right: 10px;
+}
+
+.todo-buttons {
+    align-self: flex-end;
 }
 
 /* **** FORMS And BUTTONS **** */
@@ -189,8 +218,31 @@ input[type="radio"] + label {
     width: 30px;
     border-radius: 50%;
     text-align: center;
+    cursor: pointer;
 }
 
 input[type="radio"]:checked + label {
 	background-color: var(--secondary-color);
+}
+
+.todo-edit, .todo-done {
+    border: none;
+    background: var(--dark);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.todo-edit:hover, .todo-done:hover {
+    background-color: var(--light-grey);
+    border: 2px solid var(--dark);
+} 
+
+.todo-edit > .material-icons, .todo-done > .material-icons {
+    color: var(--light-grey);
+}
+
+.todo-edit:hover > .material-icons, .todo-done:hover > .material-icons {
+    color: var(--dark);
 }
