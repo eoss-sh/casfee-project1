@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Note App</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"
-    integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script src="scripts/index.js" type="module"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="styles/index.css">
+  <script src="scripts/notes-controller.js" type="module" defer></script>
 </head>
 
 <body>
@@ -56,7 +54,7 @@
           </span>
         </label>
         <input type="radio" name="sortierung" id="sort-importance">
-        <label for="sort-importance">
+        <label class="sort-importance" for="sort-importance">
           <span class="material-icons">
             priority_high
           </span>
@@ -68,6 +66,20 @@
       <ul class="todos-list">
 
       </ul>
+    </section>
+    <section class="add-note">
+      <form class="add-note__form">
+        <label class="add-note__titel">
+          <input type="text" name="new-note__titel" id="new-note__titel">
+        </label>
+        <label class="add-note__desc">
+          <input type="textarea" name="new-note__desc" id="new-note__desc">
+        </label>
+        <label class="add-note__duedate">
+          <input type="date" name="new-note__duedate" id="new-note__duedate">
+        </label>
+        <button class="add-note__submit">Submit</button>
+      </form>
     </section>
 
   </main>
