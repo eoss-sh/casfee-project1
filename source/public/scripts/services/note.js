@@ -4,7 +4,7 @@ export default class Note {
         this.title = title;
         this.description = description;
         this.dueDate = new Date(dueDate);
-        this.createdDate = new Date('2021-01-01');
+        this.createdDate = new Date();
         this.importance = importance || 1;
         this.done = false;
     }

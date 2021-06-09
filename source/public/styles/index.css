@@ -7,6 +7,9 @@
     --grey: #B3BFB8;
     --light-grey: #F0F7F4;
     --mint: #A2E3C4;
+    --background: #ffffff;
+    --display-width-single: 100%;
+    --display-todos: block;
 }
 
 * {
@@ -21,6 +24,7 @@ body {
     font-weight: 400;
     line-height: 1.75;
     color: var(--dark);
+    background-color:var(--background) ;
 }
 
 p {margin-bottom: 1rem;}
@@ -54,14 +58,20 @@ small, .text_small {font-size: 0.833rem;}
 }
 
 .add-new {
+    color: var(--dark-grey);
     position: fixed;
     bottom: 2%;
     right: 2%;
     font-size: 5rem; 
     cursor: pointer;
+    z-index: 9999;
+    transition: all 0.2s ease-in;
 }
 .add-new:hover {
     color: var(--mint);
+}
+.add-new.rotate {
+    transform: rotate(45deg);
 }
 /* **** INTRO Section with Titel and Layout-Switcher Checkboxes **** */
 .intro {
@@ -69,7 +79,7 @@ small, .text_small {font-size: 0.833rem;}
     flex-flow: row;
     align-items: center;
     justify-content: space-between;
-    margin: 5% 0;
+    padding: 5% 0;
 }
 .layoutswitches {
     display: flex;
@@ -84,7 +94,14 @@ small, .text_small {font-size: 0.833rem;}
     --main-color: var(--dark);
     --secondary-color: var(--light-grey);
 }
-
+.dark-mode {
+    --dark: #29435c;
+    --dark-grey: #556e53;
+    --grey: #29435c;
+    --light-grey: #7c826c;
+    --mint: #d1d4c9;
+    --background: #152a38;
+}
 .layoutswitch-grid {
      /*Scoped Variables to style darkmode*/
     --width: 50px;
@@ -93,7 +110,10 @@ small, .text_small {font-size: 0.833rem;}
     --main-color: var(--dark-grey);
     --secondary-color: var(--mint);
 }
-
+.grid-mode {
+    --display-todos: flex;
+    --display-width-single: 31%;
+}
 /* **** Controls Section with Filters **** */ 
 .controls {
    position: sticky;
@@ -104,7 +124,7 @@ small, .text_small {font-size: 0.833rem;}
    justify-content: flex-end;
    align-items: center;
    gap: 20px;
-   background-color: #ffffff;
+   background-color: var(--background);
    margin-bottom: 2%;
 }
 
@@ -136,6 +156,14 @@ small, .text_small {font-size: 0.833rem;}
     padding: 2%;
     margin-bottom: 2%;
     list-style: none;
+}
+.todos-list {
+    display: var(--display-todos);
+    flex-wrap: wrap;
+    gap: 3.5%;
+}
+.todo {
+    width: var(--display-width-single);
 }
 
 /* *** Single Todo *** */
@@ -251,4 +279,29 @@ input[type="radio"]:checked + label {
 
 .done{
     text-decoration: underline;
+}
+
+/* **** Styling New Note Overlay **** */
+.add-note {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-grey);
+    overflow: hidden;
+}
+
+.add-note.active {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.add-note form {
+    display: flex;
+    flex-flow: column;
+
 }

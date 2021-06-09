@@ -1,48 +1,36 @@
 import { notesService } from './services/notes-service.js';
+import { todoElement, renderTodos } from './views/notes-view.js';
+
 // DOM Elements
-const todoElement = document.querySelector('.todos-list');
 const sortByCreated = document.querySelector('.sort-date');
 const sortByDue = document.querySelector('.sort-due');
 const sortByImportance = document.querySelector('.sort-importance');
 const onlyOpen = document.querySelector('input[name=filterdswitch-completed]');
 const addNewButton = document.querySelector('.add-note__submit');
+const openNewNoteOverlay = document.querySelector('.add-new');
+const newNoteOverlay = document.querySelector('.add-note');
+const darkMode = document.querySelector('.layoutswitch-darkmode');
+const gridMode = document.querySelector('.layoutswitch-grid');
 
-// Render all ToDos
-// Create HTML String of all Todos for Rendering
-function createTodosHtml(todos) {
-    return todos.map((todo) => `<li class="todo" data-done="${todo.done}">
-                                    <div class="check"></div>
-                                    <div class="todo-content">
-                                        <div class="meta">
-                                            <small class="todo-createddate todo-meta"><span class="material-icons">edit_calendar</span>${todo.createdDate}</small>
-                                            <small class="todo-duedate todo-meta"><span class="material-icons">event_available</span>${todo.dueDate}</small>
-                                            <small class="todo-importance todo-meta"><span class="material-icons">priority_high</span>${todo.importance}</small>
-                                        </div>
-                                        <h2 class="todo-title">${todo.title}</h2>
-                                        <p class="todo-desc">${todo.description}</p>
-                                        <div class="todo-buttons" data-id="${todo.id}">
-                                            <button class="todo-edit"><span class="material-icons">edit</span></button>
-                                            <button class="todo-done"><span class="material-icons">done</span></button>
-                                        </div>
-                                    </div>
-                                </li>`).join('');
-}
-// Attache HTML String to DOM-Element
-function renderTodos(data) {
-    const todoHtml = createTodosHtml(data);
-    todoElement.innerHTML = '';
-    todoElement.innerHTML = todoHtml;
-}
 // Add new Note
+// Open Overlay
+openNewNoteOverlay.addEventListener('click', () => {
+    newNoteOverlay.classList.toggle('active');
+    openNewNoteOverlay.classList.toggle('rotate');
+});
+// Add note Button
 addNewButton.addEventListener('click', (e) => {
     e.preventDefault();
     const note = {
         title: document.getElementById('new-note__titel').value,
         description: document.getElementById('new-note__desc').value,
         dueDate: new Date(document.getElementById('new-note__duedate').value),
+        importance: document.getElementById('new-note__importance').value,
     };
-    notesService.addNote(10, note.title, note.description, note.dueDate, 5);
+    notesService.addNote(10, note.title, note.description, note.dueDate, note.importance);
     renderTodos(notesService.notes);
+    newNoteOverlay.classList.remove('active');
+    openNewNoteOverlay.classList.remove('rotate');
 });
 // Call Render Function to actually Render the content
 // Set Todo to complete and rerender todos (default done todos = hidden)
@@ -50,6 +38,7 @@ addNewButton.addEventListener('click', (e) => {
 // Should this be moved to services file??
 function handleDoneClick(e) {
     if (e.target.matches('.todo-done')) {
+        // eslint-disable-next-line max-len
         const currentToDo = notesService.notes.find((todo) => todo.id === e.target.parentElement.dataset.id);
         if (currentToDo.done) {
             currentToDo.done = false;
@@ -80,6 +69,14 @@ onlyOpen.addEventListener('change', (e) => {
     } else {
         renderTodos(notesService.notes);
     }
+});
+
+// Layout Switcher
+darkMode.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+});
+gridMode.addEventListener('change', () => {
+    document.body.classList.toggle('grid-mode');
 });
 
 function init() {

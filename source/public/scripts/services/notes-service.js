@@ -17,12 +17,13 @@ export default class NotesService {
     }
 
     toDosSortedCreated() {
-        const sortedByCreated = this.notes.sort((todo1, todo2) => todo1.created - todo2.created);
+        const sortedByCreated = this.notes.sort((todo1, todo2) => dayjs(todo1.created).unix() - dayjs(todo2.created).unix());
+        console.log('hi')
         return sortedByCreated;
     }
 
     toDosSortedDue() {
-        const sortedByDue = this.notes.sort((todo1, todo2) => todo1.duedate - todo2.duedate);
+        const sortedByDue = this.notes.sort((todo1, todo2) => dayjs(todo1.dueDate).unix() - dayjs(todo2.dueDate).unix());
         return sortedByDue;
     }
 
