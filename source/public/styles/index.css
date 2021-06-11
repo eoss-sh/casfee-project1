@@ -12,6 +12,7 @@
     --display-todos: block;
 }
 
+/*Resets and Defaults*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,7 +20,7 @@
     font-size: 100%;
 }
 
-body {
+body, input, textarea {
     font-family: Poppins;
     font-weight: 400;
     line-height: 1.75;
@@ -56,13 +57,12 @@ small, .text_small {font-size: 0.833rem;}
     margin: 0 auto;
     position: relative;
 }
-
 .add-new {
     color: var(--dark-grey);
     position: fixed;
     bottom: 2%;
     right: 2%;
-    font-size: 5rem; 
+    font-size: 5rem;
     cursor: pointer;
     z-index: 9999;
     transition: all 0.2s ease-in;
@@ -73,7 +73,8 @@ small, .text_small {font-size: 0.833rem;}
 .add-new.rotate {
     transform: rotate(45deg);
 }
-/* **** INTRO Section with Titel and Layout-Switcher Checkboxes **** */
+
+/* **** INTRO Section with Title and Layout-Switcher Checkboxes **** */
 .intro {
     display: flex;
     flex-flow: row;
@@ -86,6 +87,7 @@ small, .text_small {font-size: 0.833rem;}
     flex-flow: row;
     gap: 20px;
 }
+
 .layoutswitch-darkmode {
  /*Scoped Variables to style darkmode*/
     --width: 50px;
@@ -102,6 +104,8 @@ small, .text_small {font-size: 0.833rem;}
     --mint: #d1d4c9;
     --background: #152a38;
 }
+
+/*Classes for Layout Changes*/
 .layoutswitch-grid {
      /*Scoped Variables to style darkmode*/
     --width: 50px;
@@ -114,7 +118,8 @@ small, .text_small {font-size: 0.833rem;}
     --display-todos: flex;
     --display-width-single: 31%;
 }
-/* **** Controls Section with Filters **** */ 
+
+/* **** Controls Section with Filters **** */
 .controls {
    position: sticky;
    top: 0;
@@ -150,7 +155,7 @@ small, .text_small {font-size: 0.833rem;}
     line-height: 30px;
 }
 
-/* **** ToDos Section with ToDos List and add new Todo **** */ 
+/* **** ToDos Section with ToDos List, edit Todo and add new Todo **** */
 .todo {
     background-color: var(--light-grey);
     padding: 2%;
@@ -194,7 +199,73 @@ small, .text_small {font-size: 0.833rem;}
     align-self: flex-end;
 }
 
+/* Hide regulare content of ToDo in edit mode => display inputs instead*/
+.edit .todo-duedate > .date, .edit .importance, .edit h2, .edit p, .edit .todo-edit, .edit .todo-done {
+    display: none;
+}
+
+/* Inputs in single ToDo by default hidden => only visible when edit class is added*/
+.todo input, .todo textarea, .todo select, .todo .todo-save {
+    display: none;
+}
+
+.edit input, .edit textarea, .edit select, .edit .todo-save {
+    display: block;
+}
+
+.todo-content > input[type="text"] {
+    margin-bottom: 2%;
+    font-size: 2.074rem;
+}
+.todo-content > textarea {
+    margin-bottom: 2%;
+}
+
 /* **** FORMS And BUTTONS **** */
+/* **** Styling New Note Overlay with add Note Form **** */
+.add-note {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-grey);
+    overflow: hidden;
+}
+
+.add-note.active {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.add-note__submit {
+    border: none;
+    border-radius: 17.5px;
+    background-color: var(--dark);
+    padding: 2% 5%;
+    color: #ffffff;
+    cursor: pointer;
+}
+.add-note__submit:hover {
+    background-color: var(--mint);
+    color: var(--dark);
+}
+
+.add-note form {
+    display: flex;
+    flex-flow: column;
+    width: 60%;
+
+}
+.add-note form label {
+    display: flex;
+    flex-flow: column;
+    min-width: 50%;
+    margin-bottom: 5%;
+}
 
 /*Styling Checkbox Inputs*/
 .switch {
@@ -253,7 +324,42 @@ input[type="radio"]:checked + label {
 	background-color: var(--secondary-color);
 }
 
-.todo-edit, .todo-done {
+/*Input Type Text*/
+input[type="text"]{
+    height: 30px;
+    border: none;
+    background-color: var(--background);
+}
+
+/*Input Type Date*/
+input[type="date"]{
+    height: 30px;
+    border: none;
+    background-color: var(--background);
+}
+input[type="date"]:placeholder {
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--dark);
+    background-color:var(--background) ;
+}
+/*Input Type Select*/
+select {
+    height: 30px;
+    border: none;
+    background-color: var(--background);
+}
+
+/*Styling Textarea*/
+textarea {
+    width: 100%;
+    height: 200px;
+    border: none;
+    background-color: var(--background);
+}
+/*Styling Buttons done and edit */
+.todo-button {
     border: none;
     background: var(--dark);
     height: 40px;
@@ -262,18 +368,18 @@ input[type="radio"]:checked + label {
     cursor: pointer;
 }
 
-.todo-edit:hover, .todo-done:hover {
+.todo-button:hover {
     background-color: var(--light-grey);
     border: 2px solid var(--dark);
-} 
+}
 
-.todo-edit > .material-icons, .todo-done > .material-icons {
+.todo-button > .material-icons {
     color: var(--light-grey);
-    /* Set Pointer Event of Icon to none so that i does not get selected when listening for js click */
+    /* Set Pointer Event of Icon to none so that it does not get selected when listening for js click */
     pointer-events: none;
 }
 
-.todo-edit:hover > .material-icons, .todo-done:hover > .material-icons {
+.todo-button:hover > .material-icons {
     color: var(--dark);
 }
 
@@ -281,27 +387,3 @@ input[type="radio"]:checked + label {
     text-decoration: underline;
 }
 
-/* **** Styling New Note Overlay **** */
-.add-note {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--light-grey);
-    overflow: hidden;
-}
-
-.add-note.active {
-    height: 100vh;
-    overflow: hidden;
-}
-
-.add-note form {
-    display: flex;
-    flex-flow: column;
-
-}

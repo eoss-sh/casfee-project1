@@ -15,6 +15,14 @@ export default class NotesService {
         const newNote = new Note(id, title, description, dueDate, importance);
         this.notes.push(newNote);
     }
+    updateNote(id, title, description, dueDate, importance){
+        const noteToUpdate = this.notes.find(note => note.id == id)
+        noteToUpdate.title = title;
+        noteToUpdate.description = description;
+        noteToUpdate.dueDate = dueDate;
+        noteToUpdate.importance = importance;
+        console.log(this.notes);
+    }
 
     toDosSortedCreated() {
         const sortedByCreated = this.notes.sort((todo1, todo2) => dayjs(todo1.created).unix() - dayjs(todo2.created).unix());

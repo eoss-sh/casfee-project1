@@ -1,7 +1,8 @@
-import { notesService } from './services/notes-service.js';
-import { todoElement, renderTodos } from './views/notes-view.js';
+import { notesService } from '../services/notes-service.js';
+import { todoElement, renderTodos } from '../views/notes-view.js';
 
 // DOM Elements
+//[Question: Ok that all Elements are collected at the top?]
 const sortByCreated = document.querySelector('.sort-date');
 const sortByDue = document.querySelector('.sort-due');
 const sortByImportance = document.querySelector('.sort-importance');
@@ -32,10 +33,8 @@ addNewButton.addEventListener('click', (e) => {
     newNoteOverlay.classList.remove('active');
     openNewNoteOverlay.classList.remove('rotate');
 });
-// Call Render Function to actually Render the content
-// Set Todo to complete and rerender todos (default done todos = hidden)
-// Handle Function
-// Should this be moved to services file??
+//Toggle class for done ToDos, look up affected ToDo and toogle the value of done for this Todo
+// [Question]: Should this be moved to services file??
 function handleDoneClick(e) {
     if (e.target.matches('.todo-done')) {
         // eslint-disable-next-line max-len
@@ -50,8 +49,29 @@ function handleDoneClick(e) {
 }
 
 // Add Eventlistenerses
-// Handle Done Click
+// Handle Done Click in calling handleDoneClick function
 todoElement.addEventListener('click', handleDoneClick);
+// Handle Edit of Single ToDo
+todoElement.addEventListener('click', (e) => {
+    if (e.target.matches('.todo-edit')) {
+        e.target.parentElement.parentElement.parentElement.classList.toggle('edit');
+    }
+} )
+// Handle Update of ToDo
+// [Question: Render looses filter => ok?]
+todoElement.addEventListener('click', (e) => {
+    if (e.target.matches('.todo-save')) {
+        const currentNote = e.target.parentElement.parentElement.parentElement;
+        const id = 1;
+        const title = currentNote.querySelector('.todo-title__edit').value;
+        const description = currentNote.querySelector('.todo-desc__edit').value;
+        const dueDate = currentNote.querySelector('.todo-duedate__edit').value;
+        const importance = currentNote.querySelector('.todo-importance__edit').value;
+        notesService.updateNote(id, title, description, dueDate, importance);
+        currentNote.classList.toggle('edit');
+        renderTodos(notesService.notes);
+    }
+})
 
 // Handle Sorting
 sortByCreated.addEventListener('click', () => {
