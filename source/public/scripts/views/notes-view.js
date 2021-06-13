@@ -1,9 +1,6 @@
-// Dom Elements
-export const todoElement = document.querySelector('.todos-list');
-
 // Render all ToDos
 // Create HTML String of all Todos for Rendering
-function createTodosHtml(todos) {
+export function createTodosHtml(todos) {
     return todos.map((todo) => `<li class="todo" data-done="${todo.done}">
                                     <div class="check"></div>
                                     <div class="todo-content">
@@ -35,10 +32,4 @@ function createTodosHtml(todos) {
                                         </div>
                                     </div> 
                                 </li>`).join('');
-}
-// Attache HTML String to DOM-Element
-export function renderTodos(data) {
-    const todoHtml = createTodosHtml(data);
-    todoElement.innerHTML = '';
-    todoElement.innerHTML = todoHtml;
 }

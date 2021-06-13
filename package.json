@@ -5,7 +5,7 @@
   "main": "public/scripts/main.js",
   "type": "module",
   "scripts": {
-    "start": "node ./source/index.js",
+    "start": "nodemon ./source/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "stylelint": "stylelint \"./source/**/*.css\"",
     "w3c": "html-validator --file ./source/public/index.html  --verbose",
@@ -23,7 +23,11 @@
     "stylelint-config-standard": "^21.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "moment": "^2.29.1"
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "nedb": "^1.8.0",
+    "nedb-promise": "^2.0.1"
   }
 }

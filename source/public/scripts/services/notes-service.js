@@ -1,22 +1,24 @@
-import NoteStorage from './data/note-storage.js';
-import Note from './note.js';
+import {httpService} from './http-service.js';
 
 export default class NotesService {
     constructor() {
-        this.storage = new NoteStorage();
         this.notes = [];
     }
 
-    loadNotes() {
-        this.notes = this.storage.getNotes().map((n) => new Note(n.id, n.title, n.description, n.dueDate, n.importance));
+    async getNotes() {
+        const response = await httpService.ajax('GET', '/notes', undefined);
+        return response;
     }
 
-    addNote(id, title, description, dueDate, importance) {
-        const newNote = new Note(id, title, description, dueDate, importance);
-        this.notes.push(newNote);
+    async addNote(id, title, description, dueDate, importance) {
+        console.log('beofre add');
+        const fetchResponse = await httpService.ajax('POST', '/notes', {title, description, dueDate, importance});
+        console.log('after add');
+        return fetchResponse;
     }
+
     updateNote(id, title, description, dueDate, importance){
-        const noteToUpdate = this.notes.find(note => note.id == id)
+        const noteToUpdate = this.notes.find(note => note.id == id);
         noteToUpdate.title = title;
         noteToUpdate.description = description;
         noteToUpdate.dueDate = dueDate;
@@ -26,7 +28,6 @@ export default class NotesService {
 
     toDosSortedCreated() {
         const sortedByCreated = this.notes.sort((todo1, todo2) => dayjs(todo1.created).unix() - dayjs(todo2.created).unix());
-        console.log('hi')
         return sortedByCreated;
     }
 
