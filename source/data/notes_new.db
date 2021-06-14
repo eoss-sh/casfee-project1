@@ -1,0 +1,5 @@
+{"title":"Das ist eine neue Notiz","description":"Test","dueDate":{"$$date":1623974400000},"createdDate":{"$$date":1623573417184},"importance":"3","done":false,"_id":"LzJL5ZpSDbpsgk9u"}
+{"title":"Das ist eine neue Notiz","description":"Test","dueDate":{"$$date":1623974400000},"createdDate":{"$$date":1623573417184},"importance":"3","done":true,"_id":"LzJL5ZpSDbpsgk9u"}
+{"title":"This is a new Test","description":"Neuer Test für komischen Fehler","dueDate":{"$$date":1623196800000},"createdDate":{"$$date":1623573497435},"importance":"3","done":false,"_id":"Ya7WFlOZZKao7GJG"}
+{"title":"This is a new Test","description":"Neuer Test für komischen Fehler","dueDate":{"$$date":1623196800000},"createdDate":{"$$date":1623573497435},"importance":"3","done":true,"_id":"Ya7WFlOZZKao7GJG"}
+{"title":"Noch ein Test","description":"Test","dueDate":{"$$date":1623715200000},"createdDate":{"$$date":1623573543876},"importance":"3","done":false,"_id":"piTYpTmIPR4GAMsB"}

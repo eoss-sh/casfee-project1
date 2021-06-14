@@ -25,7 +25,7 @@ export function createTodosHtml(todos) {
                                         <h2 class="edit-mode">${todo.title}</h2>
                                         <textarea class="todo-desc__edit">${todo.description}</textarea>
                                         <p class="todo-desc">${todo.description}</p>
-                                        <div class="todo-buttons" data-id="${todo.id}">
+                                        <div class="todo-buttons" data-id="${todo._id}">
                                             <button class="todo-button todo-edit"><span class="material-icons">edit</span></button>
                                             <button class="todo-button todo-done"><span class="material-icons">done</span></button>
                                             <button class="todo-button todo-save"><span class="material-icons">save</span></button>

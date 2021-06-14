@@ -6,14 +6,22 @@ export default class NotesService {
     }
 
     async getNotes() {
-        const response = await httpService.ajax('GET', '/notes', undefined);
-        return response;
+        const fetchResponse = await httpService.ajax('GET', '/notes', undefined);
+        return fetchResponse;
+    }
+
+    async getNote(id) {
+        const fetchResponse = await httpService.ajax('GET', `/notes/${id}`, undefined);
+        return fetchResponse;
     }
 
     async addNote(id, title, description, dueDate, importance) {
-        console.log('beofre add');
         const fetchResponse = await httpService.ajax('POST', '/notes', {title, description, dueDate, importance});
-        console.log('after add');
+        return fetchResponse;
+    }
+
+    async deleteNote(id) {
+        const fetchResponse = await httpService.ajax('DELETE', `/notes/${id}`, undefined);
         return fetchResponse;
     }
 

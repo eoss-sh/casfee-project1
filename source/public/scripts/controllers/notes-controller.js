@@ -39,30 +39,20 @@ addNewButton.addEventListener('click', async (e) => {
         importance: document.getElementById('new-note__importance').value,
     };
     await notesService.addNote(10, note.title, note.description, note.dueDate, note.importance);
-    console.log('after add before render')
     await renderNotes();
-    console.log('before render')
     newNoteOverlay.classList.remove('active');
     openNewNoteOverlay.classList.remove('rotate');
 });
-// Toggle class for done ToDos, look up affected ToDo and toogle the value of done for this Todo
-// [Question]: Should this be moved to services file??
-function handleDoneClick(e) {
+// Set State of Note to Done and rerender Notes
+todoElement.addEventListener('click', async (e) => {
     if (e.target.matches('.todo-done')) {
-        // eslint-disable-next-line max-len
-        const currentToDo = notesService.notes.find((todo) => todo.id === e.target.parentElement.dataset.id);
-        if (currentToDo.done) {
-            currentToDo.done = false;
-        } else {
-            currentToDo.done = true;
-        }
+        const currentNoteId = e.target.parentElement.dataset.id;
+            await notesService.deleteNote(currentNoteId);
+            console.log('before render')
+            await renderNotes();
         e.target.parentElement.parentElement.parentElement.classList.toggle('done');
     }
-}
-
-// Add Eventlistenerses
-// Handle Done Click in calling handleDoneClick function
-todoElement.addEventListener('click', handleDoneClick);
+});
 // Handle Edit of Single ToDo
 todoElement.addEventListener('click', (e) => {
     if (e.target.matches('.todo-edit')) {
