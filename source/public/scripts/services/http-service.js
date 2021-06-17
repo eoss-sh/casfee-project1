@@ -6,7 +6,9 @@ class HttpService {
             method,
             headers: fetchHeaders,
             body: JSON.stringify(data),
-            }).then((x) => x.json());
+            })
+            .then((x) => x.json())
+            .catch((err) => console.log(err));
     }
 }
 

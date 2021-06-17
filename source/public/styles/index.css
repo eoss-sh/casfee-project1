@@ -8,6 +8,9 @@
     --light-grey: #F0F7F4;
     --mint: #A2E3C4;
     --background: #ffffff;
+    --alert-mid: #EDE04D;
+    --alert-high: #ff7200;;
+    --alert-very-high: #ED4F32;
     --display-width-single: 100%;
     --display-todos: block;
 }
@@ -96,6 +99,7 @@ small, .text_small {font-size: 0.833rem;}
     --main-color: var(--dark);
     --secondary-color: var(--light-grey);
 }
+
 .dark-mode {
     --dark: #29435c;
     --dark-grey: #556e53;
@@ -114,6 +118,7 @@ small, .text_small {font-size: 0.833rem;}
     --main-color: var(--dark-grey);
     --secondary-color: var(--mint);
 }
+
 .grid-mode {
     --display-todos: flex;
     --display-width-single: 31%;
@@ -387,3 +392,27 @@ textarea {
     text-decoration: underline;
 }
 
+/*Styling Importance Icons / Text*/
+[data-value]::after {
+    content: '!';
+    font-size: 1.5rem;
+}
+
+[data-value="2"]::after {
+    content: '!!';
+}
+
+[data-value="3"]::after {
+    content: '!!!';
+    color: var(--alert-mid);
+}
+
+[data-value="4"]::after {
+    content: '!!!!';
+    color: var(--alert-high);
+}
+
+[data-value="5"]::after {
+    content: '!!!!!';
+    color: var(--alert-very-high);
+}

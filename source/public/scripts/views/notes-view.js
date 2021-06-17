@@ -12,13 +12,15 @@ export function createTodosHtml(todos) {
                                                 <input type="date" value="${dayjs(todo.dueDate).format('YYYY-MM-DD')}" class="todo-duedate__edit">
                                                 <span class="date">${dayjs(todo.dueDate).format('DD.MM.YYYY')}</span>
                                             </small>
-                                            <small class="todo-importance todo-meta"><span class="material-icons">priority_high</span>
+                                            <small class="todo-importance todo-meta">
                                                 <select selected="${todo.importance}" class="todo-importance__edit">
                                                   <option value="1">!</option>
                                                   <option value="2">!!</option>
                                                   <option value="3">!!!</option>
+                                                  <option value="4">!!!!</option>
+                                                  <option value="5">!!!!!</option>
                                                 </select>
-                                                <span class="importance">${todo.importance}</span>
+                                                <span class="importance" data-value="${todo.importance}"></span>
                                             </small>
                                         </div>
                                         <input type="text" value="${todo.title}" class="todo-title__edit">

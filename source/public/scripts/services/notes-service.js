@@ -5,8 +5,8 @@ export default class NotesService {
         this.notes = [];
     }
 
-    async getNotes() {
-        const fetchResponse = await httpService.ajax('GET', '/notes', undefined);
+    async getNotes(showDone, sortMethode) {
+        const fetchResponse = await httpService.ajax('GET', `/notes?done=${showDone}&sorting=${sortMethode}`, undefined);
         return fetchResponse;
     }
 
@@ -25,13 +25,9 @@ export default class NotesService {
         return fetchResponse;
     }
 
-    updateNote(id, title, description, dueDate, importance){
-        const noteToUpdate = this.notes.find(note => note.id == id);
-        noteToUpdate.title = title;
-        noteToUpdate.description = description;
-        noteToUpdate.dueDate = dueDate;
-        noteToUpdate.importance = importance;
-        console.log(this.notes);
+    async updateNote(id, title, description, dueDate, importance){
+        const fetchResponse = await httpService.ajax('PUT', `/notes/${id}`, {title, description, dueDate, importance});
+        return fetchResponse;
     }
 
     toDosSortedCreated() {

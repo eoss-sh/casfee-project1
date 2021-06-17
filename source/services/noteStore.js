@@ -6,9 +6,10 @@ export default class NoteStore {
         this.db = db || new Datastore({filename: './source/data/notes_new.db', autoload: true});
     }
 
-    async all() {
-        const notes = await this.db.find({done:false});
-        return notes;
+    async all(done, sorting) {
+        const query = (done === 'false') ? {done: false} : {};
+            const notes = await this.db.cfind(query).sort({[sorting]: -1}).exec();
+            return notes;
     }
 
     async get(id) {
@@ -16,14 +17,25 @@ export default class NoteStore {
         return note;
     }
 
-    // [Question: Kann man das ohne return await lösen? Warum macht man das so?]
+    // [Question]: Kann man das ohne return await lösen? Warum macht man das so?
     async add(title, description, dueDate, importance) {
             const note = new Note(title, description, dueDate, importance);
             return await this.db.insert(note);
     }
 
     async delete(id) {
-        await this.db.update({_id: id}, {$set: {done: true}});
+        const note = await this.db.update({_id: id}, {$set: {done: true}});
+        return note;
+    }
+
+    async update(id, title, description, dueDate, importance) {
+        const note = await this.db.update({_id: id}, {$set: {
+                title,
+                description,
+                dueDate,
+                importance,
+            }});
+        return note;
     }
 }
 

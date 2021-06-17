@@ -13,11 +13,17 @@ const openNewNoteOverlay = document.querySelector('.add-new');
 const newNoteOverlay = document.querySelector('.add-note');
 const darkMode = document.querySelector('.layoutswitch-darkmode');
 const gridMode = document.querySelector('.layoutswitch-grid');
+const newNoteForm = document.querySelector('.add-note__form');
+
+// Filter Variables Store
+// Variable to Check if Deleted are shown => Default false
+let showDeleted = false;
+let sortOrder = 'createdDate';
 
 // Render ToDos
 // Attache HTML String to DOM-Element
-async function renderNotes() {
-    const notes = await notesService.getNotes();
+async function renderNotes(showDone = showDeleted, sortMethode = sortOrder) {
+    const notes = await notesService.getNotes(showDone, sortMethode);
     const todoHtml = await createTodosHtml(notes);
     todoElement.innerHTML = '';
     todoElement.innerHTML = todoHtml;
@@ -29,67 +35,84 @@ openNewNoteOverlay.addEventListener('click', () => {
     newNoteOverlay.classList.toggle('active');
     openNewNoteOverlay.classList.toggle('rotate');
 });
-// Add note Button
+// "Add Note" Button Event Listener
 addNewButton.addEventListener('click', async (e) => {
     e.preventDefault();
+    const titleValue = document.getElementById('new-note__titel').value;
+    const descriptionValue = document.getElementById('new-note__desc').value;
+    const dueDateValue = document.getElementById('new-note__duedate').value;
+    const importanceValue = document.getElementById('new-note__importance').value;
     const note = {
-        title: document.getElementById('new-note__titel').value,
-        description: document.getElementById('new-note__desc').value,
-        dueDate: new Date(document.getElementById('new-note__duedate').value),
-        importance: document.getElementById('new-note__importance').value,
+        title: titleValue,
+        description: descriptionValue,
+        dueDate: new Date(dueDateValue),
+        importance: importanceValue,
     };
-    await notesService.addNote(10, note.title, note.description, note.dueDate, note.importance);
-    await renderNotes();
-    newNoteOverlay.classList.remove('active');
-    openNewNoteOverlay.classList.remove('rotate');
+    if (titleValue === '' || descriptionValue === '' || dueDateValue === '' || importanceValue === '') {
+        const errorMessage = document.createElement('div');
+        newNoteForm.insertBefore(errorMessage, newNoteForm.firstChild);
+        errorMessage.innerHTML = `<p>Das Formular ist nicht vollständig ausgefüllt. Bitte prüfen Sie Ihre Eingabe.</p>`;
+        setTimeout(() => { newNoteForm.removeChild(errorMessage); }, 3000);
+    } else {
+        await notesService.addNote(10, note.title, note.description, note.dueDate, note.importance);
+        await renderNotes();
+        newNoteOverlay.classList.remove('active');
+        openNewNoteOverlay.classList.remove('rotate');
+        newNoteForm.reset();
+    };
 });
-// Set State of Note to Done and rerender Notes
+// Delete Note
+// Set State of Note to Delete and rerender Notes
 todoElement.addEventListener('click', async (e) => {
     if (e.target.matches('.todo-done')) {
         const currentNoteId = e.target.parentElement.dataset.id;
             await notesService.deleteNote(currentNoteId);
-            console.log('before render')
             await renderNotes();
-        e.target.parentElement.parentElement.parentElement.classList.toggle('done');
     }
 });
-// Handle Edit of Single ToDo
+// Edit of Single Note
+// Open Edit-Mode of Single Note
 todoElement.addEventListener('click', (e) => {
     if (e.target.matches('.todo-edit')) {
         e.target.parentElement.parentElement.parentElement.classList.toggle('edit');
     }
 });
-// Handle Update of ToDo
+// Handle Update of Note
 // [Question: Render looses filter => ok?]
-todoElement.addEventListener('click', (e) => {
+todoElement.addEventListener('click', async (e) => {
     if (e.target.matches('.todo-save')) {
         const currentNote = e.target.parentElement.parentElement.parentElement;
-        const id = 1;
+        const {id} = e.target.parentElement.dataset;
         const title = currentNote.querySelector('.todo-title__edit').value;
         const description = currentNote.querySelector('.todo-desc__edit').value;
         const dueDate = currentNote.querySelector('.todo-duedate__edit').value;
         const importance = currentNote.querySelector('.todo-importance__edit').value;
-        notesService.updateNote(id, title, description, dueDate, importance);
+        await notesService.updateNote(id, title, description, dueDate, importance);
         currentNote.classList.toggle('edit');
-        renderTodos(notesService.notes);
+        await renderNotes();
     }
 });
 
 // Handle Sorting
 sortByCreated.addEventListener('click', () => {
-    renderTodos(notesService.toDosSortedCreated());
+    sortOrder = 'createdDate';
+    renderNotes(showDeleted, 'createdDate');
 });
 sortByDue.addEventListener('click', () => {
-    renderTodos(notesService.toDosSortedDue());
+    sortOrder = 'duedDate';
+    renderNotes(showDeleted, 'dueDate');
 });
 sortByImportance.addEventListener('click', () => {
-    renderTodos(notesService.toDosSortedImportance());
+    sortOrder = 'importance';
+    renderNotes(showDeleted, 'importance');
 });
 onlyOpen.addEventListener('change', (e) => {
     if (e.target.checked) {
-        renderTodos(notesService.toDosOnlyOpen());
+        showDeleted = true;
+        renderNotes(showDeleted, sortOrder);
     } else {
-        renderTodos(notesService.notes);
+        showDeleted = false;
+        renderNotes(showDeleted, sortOrder);
     }
 });
 

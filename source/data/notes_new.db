@@ -1,5 +1,30 @@
-{"title":"Das ist eine neue Notiz","description":"Test","dueDate":{"$$date":1623974400000},"createdDate":{"$$date":1623573417184},"importance":"3","done":false,"_id":"LzJL5ZpSDbpsgk9u"}
+{"title":"","description":"spätes due date","dueDate":{"$$date":1635292800000},"createdDate":{"$$date":1623921814808},"importance":"2","done":false,"_id":"33QpiXwD2XSEhtUl"}
+{"title":"dasd Test Wichtigkeit","description":"dasdasd","dueDate":{"$$date":1632355200000},"createdDate":{"$$date":1623958739919},"importance":"3","done":false,"_id":"42APu0TuZv2RloQS"}
+{"title":"dasd","description":"asdasd","dueDate":"2021-06-22","createdDate":{"$$date":1623912272099},"importance":"1","done":false,"_id":"8msU5TZPZ1f40ZUw"}
+{"title":"dasd","description":"asdasd","dueDate":{"$$date":0},"createdDate":{"$$date":1623912250037},"importance":"1","done":false,"_id":"9FmVeI24jxr9QaqV"}
+{"title":"Das ist ein Test 2","description":"Das ist ein Test um das Edit des ToDos zu prüfen.","dueDate":"2021-06-30","createdDate":{"$$date":1623911176839},"importance":"1","done":true,"_id":"DIB0qN0ekGEqodKc"}
+{"title":"dasdasd Test Wichtigkeit 2","description":"addasdas","dueDate":{"$$date":1624752000000},"createdDate":{"$$date":1623958979633},"importance":"2","done":false,"_id":"ElAmlC1OttDnn4h5"}
+{"title":"da","description":"dasdas","dueDate":{"$$date":1623801600000},"createdDate":{"$$date":1623916688538},"importance":"3","done":false,"_id":"IGMP7RgxpbmufJOL"}
+{"title":"","description":"","dueDate":{"$$date":0},"createdDate":{"$$date":1623959268488},"importance":"1","done":false,"_id":"Is4nApwXq64KJUvq"}
+{"title":"das","description":"adasda","dueDate":{"$$date":1623196800000},"createdDate":{"$$date":1623908024399},"importance":"3","done":true,"_id":"KykdDHevtQyoXHGu"}
 {"title":"Das ist eine neue Notiz","description":"Test","dueDate":{"$$date":1623974400000},"createdDate":{"$$date":1623573417184},"importance":"3","done":true,"_id":"LzJL5ZpSDbpsgk9u"}
-{"title":"This is a new Test","description":"Neuer Test für komischen Fehler","dueDate":{"$$date":1623196800000},"createdDate":{"$$date":1623573497435},"importance":"3","done":false,"_id":"Ya7WFlOZZKao7GJG"}
+{"title":"","description":"","dueDate":{"$$date":0},"createdDate":{"$$date":1623959108236},"importance":"1","done":false,"_id":"Nf0U9xuFRMYq0gnq"}
+{"title":"dadas","description":"dasdasd","dueDate":{"$$date":1624320000000},"createdDate":{"$$date":1623907738441},"importance":"3","done":true,"_id":"SwLxG3st2bWPfP34"}
+{"title":"ToDo von Nadja","description":"Das ist ein Todo von Nadja","dueDate":"2021-10-28","createdDate":{"$$date":1623958323509},"importance":"3","done":true,"_id":"T90ioevCOg6HXOzp"}
+{"title":"ToDo von Nadja","description":"Das ist ein Todo","dueDate":{"$$date":1634256000000},"createdDate":{"$$date":1623958679372},"importance":"3","done":false,"_id":"TnCkejyjEGY1gQ5C"}
+{"title":"dasd","description":"adasd","dueDate":{"$$date":1625011200000},"createdDate":{"$$date":1623908372983},"importance":"3","done":true,"_id":"VjYUz60ryrHWsp0A"}
 {"title":"This is a new Test","description":"Neuer Test für komischen Fehler","dueDate":{"$$date":1623196800000},"createdDate":{"$$date":1623573497435},"importance":"3","done":true,"_id":"Ya7WFlOZZKao7GJG"}
-{"title":"Noch ein Test","description":"Test","dueDate":{"$$date":1623715200000},"createdDate":{"$$date":1623573543876},"importance":"3","done":false,"_id":"piTYpTmIPR4GAMsB"}
+{"title":"frühes duedate","description":"spätes due date","dueDate":{"$$date":1615420800000},"createdDate":{"$$date":1623921835094},"importance":"2","done":false,"_id":"cCTkgA46FFogR4mj"}
+{"title":"dasda","description":"dasd","dueDate":{"$$date":1624492800000},"createdDate":{"$$date":1623907819208},"importance":"3","done":true,"_id":"g9VCCykbK3OwaQ19"}
+{"title":"das","description":"adasda","dueDate":{"$$date":1623196800000},"createdDate":{"$$date":1623908068750},"importance":"3","done":true,"_id":"iixwu1kWLdi6BDea"}
+{"title":"Ein weiterer Test","description":"Beschreibung","dueDate":{"$$date":1625097600000},"createdDate":{"$$date":1623906781862},"importance":"3","done":true,"_id":"lOVsqSj5KTPIRahs"}
+{"title":"Test","description":"Test","dueDate":{"$$date":1623801600000},"createdDate":{"$$date":1623907655693},"importance":"3","done":true,"_id":"n5Hic8LIciaf22Zt"}
+{"title":"Noch ein Test","description":"Test","dueDate":{"$$date":1623715200000},"createdDate":{"$$date":1623573543876},"importance":"3","done":true,"_id":"piTYpTmIPR4GAMsB"}
+{"title":"Test","description":"Test","dueDate":{"$$date":1624406400000},"createdDate":{"$$date":1623912118657},"importance":"2","done":false,"_id":"rOs8uay22NcA1NLO"}
+{"title":"TEst Firefox","description":"Test","dueDate":{"$$date":1623369600000},"createdDate":{"$$date":1623907042421},"importance":"3","done":true,"_id":"rnPzf3jj5EFWiacv"}
+{"title":"Titel nach Verifikation","description":"Test nach Verifikation","dueDate":{"$$date":1624060800000},"createdDate":{"$$date":1623959829233},"importance":"3","done":false,"_id":"uX7OU6N2gISuIiaL"}
+{"title":"Das ist ein Test","description":"Das ist eine Beschreibung des Tests","dueDate":{"$$date":1623456000000},"createdDate":{"$$date":1623906400749},"importance":"3","done":true,"_id":"vG7DEgj1vrurgT5L"}
+{"title":"dasda","description":"dasdasd","dueDate":{"$$date":0},"createdDate":{"$$date":1623913658916},"importance":"1","done":false,"_id":"xukiXhUZFOwKjuYQ"}
+{"title":"Another Test","description":"Test","dueDate":{"$$date":1624406400000},"createdDate":{"$$date":1623907332064},"importance":"3","done":true,"_id":"xvjpAOTECt09KX9h"}
+{"title":"Test Wichtig","description":"Wichtig!!!!!","dueDate":{"$$date":1625184000000},"createdDate":{"$$date":1623963247497},"importance":"5","done":false,"_id":"1YEkLOo08h0XIgS3"}
+{"title":"Wichtigkeit Hoch","description":"Wichtigkeit Orange","dueDate":{"$$date":1624579200000},"createdDate":{"$$date":1623963358849},"importance":"4","done":false,"_id":"OtlYUpBzZbkrS088"}
