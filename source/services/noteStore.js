@@ -3,7 +3,7 @@ import Note from './note.js';
 
 export default class NoteStore {
     constructor(db) {
-        this.db = db || new Datastore({filename: './source/data/notes_new.db', autoload: true});
+        this.db = db || new Datastore({filename: './source/data/notes.db', autoload: true});
     }
 
     async all(done, sorting) {
@@ -32,7 +32,7 @@ export default class NoteStore {
         const note = await this.db.update({_id: id}, {$set: {
                 title,
                 description,
-                dueDate,
+                dueDate: new Date(dueDate),
                 importance,
             }});
         return note;

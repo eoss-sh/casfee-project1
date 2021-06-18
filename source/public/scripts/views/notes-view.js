@@ -6,11 +6,11 @@ export function createTodosHtml(todos) {
                                     <div class="todo-content">
                                         <div class="meta">
                                             <small class="todo-createddate todo-meta"><span class="material-icons">edit_calendar</span>
-                                                <span class="date">${dayjs(todo.createdDate).format('DD.MM.YYYY')}</span>
+                                                <span class="date">${new Date(todo.createdDate).toLocaleDateString('de-DE')}</span>
                                             </small>
                                             <small class="todo-duedate todo-meta"><span class="material-icons">event_available</span>
-                                                <input type="date" value="${dayjs(todo.dueDate).format('YYYY-MM-DD')}" class="todo-duedate__edit">
-                                                <span class="date">${dayjs(todo.dueDate).format('DD.MM.YYYY')}</span>
+                                                <input type="date" value="${moment(todo.dueDate).format('yyyy-MM-DD')}" class="todo-duedate__edit">
+                                                <span class="date">${new Date(todo.dueDate).toLocaleDateString('de-DE')}</span>
                                             </small>
                                             <small class="todo-importance todo-meta">
                                                 <select selected="${todo.importance}" class="todo-importance__edit">

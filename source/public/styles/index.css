@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,500;1,100&display=swap');
 
-/*Global Variables*/
+/* Global Variables */
 :root {
-    --dark: #3C493F;
-    --dark-grey: #7E8D85;
-    --grey: #B3BFB8;
-    --light-grey: #F0F7F4;
-    --mint: #A2E3C4;
-    --background: #ffffff;
-    --alert-mid: #EDE04D;
-    --alert-high: #ff7200;;
-    --alert-very-high: #ED4F32;
+    --dark: #3c493f;
+    --dark-grey: #7e8d85;
+    --grey: #b3bfb8;
+    --light-grey: #f0f7f4;
+    --mint: #a2e3c4;
+    --background: #fff;
+    --alert-mid: #ede04d;
+    --alert-high: #ff7200;
+    --alert-very-high: #ed4f32;
     --display-width-single: 100%;
     --display-todos: block;
 }
 
-/*Resets and Defaults*/
+/* Resets and Defaults */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,36 +23,36 @@
     font-size: 100%;
 }
 
-body, input, textarea {
-    font-family: Poppins;
+body,
+input,
+textarea {
+    font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 1.75;
     color: var(--dark);
-    background-color:var(--background) ;
+    background-color: var(--background);
 }
 
-p {margin-bottom: 1rem;}
+p { margin-bottom: 1rem; }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  line-height: 1.3;
+h1,
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
 }
 
 h1 {
-  margin-top: 0;
-  font-size: 2.488rem;
+    margin-top: 0;
+    font-size: 2.488rem;
 }
 
-h2 {font-size: 2.074rem;}
+h2 { font-size: 2.074rem; }
 
-h3 {font-size: 1.728rem;}
-
-h4 {font-size: 1.44rem;}
-
-h5 {font-size: 1.2rem;}
-
-small, .text_small {font-size: 0.833rem;}
+small,
+.text_small {
+    font-size: 0.833rem;
+}
 
 /* *** General App Styling *** */
 .app {
@@ -60,6 +60,7 @@ small, .text_small {font-size: 0.833rem;}
     margin: 0 auto;
     position: relative;
 }
+
 .add-new {
     color: var(--dark-grey);
     position: fixed;
@@ -70,9 +71,11 @@ small, .text_small {font-size: 0.833rem;}
     z-index: 9999;
     transition: all 0.2s ease-in;
 }
+
 .add-new:hover {
     color: var(--mint);
 }
+
 .add-new.rotate {
     transform: rotate(45deg);
 }
@@ -85,14 +88,15 @@ small, .text_small {font-size: 0.833rem;}
     justify-content: space-between;
     padding: 5% 0;
 }
+
 .layoutswitches {
     display: flex;
     flex-flow: row;
     gap: 20px;
 }
 
+/* Scoped Variables to style darkmode */
 .layoutswitch-darkmode {
- /*Scoped Variables to style darkmode*/
     --width: 50px;
     --heigth: calc(var(--width) / 2);
     --border-radius: calc(var(--heigth) / 2);
@@ -109,9 +113,8 @@ small, .text_small {font-size: 0.833rem;}
     --background: #152a38;
 }
 
-/*Classes for Layout Changes*/
+/* Scoped Variables to style grid-view */
 .layoutswitch-grid {
-     /*Scoped Variables to style darkmode*/
     --width: 50px;
     --heigth: calc(var(--width) / 2);
     --border-radius: calc(var(--heigth) / 2);
@@ -124,22 +127,33 @@ small, .text_small {font-size: 0.833rem;}
     --display-width-single: 31%;
 }
 
-/* **** Controls Section with Filters **** */
-.controls {
-   position: sticky;
-   top: 0;
-   left: 0;
-   display: flex;
-   flex-flow: row;
-   justify-content: flex-end;
-   align-items: center;
-   gap: 20px;
-   background-color: var(--background);
-   margin-bottom: 2%;
+@media (max-width: 800px) {
+    .grid-mode {
+        --display-width-single: 48%;
+    }
 }
 
-.filterdswitch-completed {
-      /*Scoped Variables to style darkmode*/
+@media (max-width: 500px) {
+    .grid-mode {
+        --display-width-single: 100%;
+    }
+}
+
+/* **** Controls Section with Filters **** */
+.controls {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--background);
+    margin-bottom: 2%;
+}
+
+.filterswitch-completed {
     --width: 50px;
     --heigth: calc(var(--width) / 2);
     --border-radius: calc(var(--heigth) / 2);
@@ -148,12 +162,13 @@ small, .text_small {font-size: 0.833rem;}
 }
 
 .sorting {
-    --secondary-color: var(--mint);
     display: flex;
     align-items: center;
     height: 35px;
     border-radius: 17.5px;
     background-color: var(--dark-grey);
+
+    --secondary-color: var(--mint);
 }
 
 .sorting .material-icons {
@@ -161,38 +176,50 @@ small, .text_small {font-size: 0.833rem;}
 }
 
 /* **** ToDos Section with ToDos List, edit Todo and add new Todo **** */
-.todo {
-    background-color: var(--light-grey);
-    padding: 2%;
-    margin-bottom: 2%;
-    list-style: none;
-}
 .todos-list {
     display: var(--display-todos);
     flex-wrap: wrap;
     gap: 3.5%;
 }
+
 .todo {
+    position: relative;
     width: var(--display-width-single);
+    background-color: var(--light-grey);
+    padding: 2%;
+    margin-bottom: 2%;
+    list-style: none;
+    transition: transform 0.5s ease;
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
 }
 
-/* *** Single Todo *** */
-/* Dates and Icons */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* *** Single Todo ***
+Dates and Icons */
 .todo-content {
     display: flex;
     flex-flow: column;
 }
+
 .meta {
     display: flex;
     flex-flow: row;
 }
+
 .todo-meta {
     display: flex;
     flex-flow: row;
     align-items: center;
     margin-bottom: 2%;
 }
-.todo-meta:not(:last-child){
+
+.todo-meta:not(:last-child) {
     margin-right: 5%;
 }
 
@@ -204,67 +231,64 @@ small, .text_small {font-size: 0.833rem;}
     align-self: flex-end;
 }
 
-/* Hide regulare content of ToDo in edit mode => display inputs instead*/
-.edit .todo-duedate > .date, .edit .importance, .edit h2, .edit p, .edit .todo-edit, .edit .todo-done {
+/* Hide regular content of ToDo in edit mode => display inputs instead */
+.edit .todo-duedate > .date,
+.edit .importance,
+.edit h2,
+.edit p,
+.edit .todo-edit,
+.edit .todo-done {
     display: none;
 }
 
-/* Inputs in single ToDo by default hidden => only visible when edit class is added*/
-.todo input, .todo textarea, .todo select, .todo .todo-save {
+/* Inputs in single ToDo by default hidden => only visible when edit class is added */
+.todo input,
+.todo textarea,
+.todo select,
+.todo .todo-save {
     display: none;
 }
 
-.edit input, .edit textarea, .edit select, .edit .todo-save {
+.todo.edit input,
+.todo.edit textarea,
+.todo.edit select,
+.todo.edit .todo-save {
     display: block;
 }
 
-.todo-content > input[type="text"] {
-    margin-bottom: 2%;
-    font-size: 2.074rem;
-}
-.todo-content > textarea {
-    margin-bottom: 2%;
-}
-
-/* **** FORMS And BUTTONS **** */
-/* **** Styling New Note Overlay with add Note Form **** */
+/* **** FORMS And BUTTONS ****
+**** Styling New Note Overlay with add Note Form **** */
 .add-note {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
-    height: 0vh;
-    width: 100vw;
+    left: 100%;
+    height: 100vh;
+    width: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--light-grey);
     overflow: hidden;
+    transition: all 0.5s ease;
 }
 
 .add-note.active {
-    height: 100vh;
-    overflow: hidden;
+    width: 100vw;
+    left: 0;
 }
 
-.add-note__submit {
-    border: none;
-    border-radius: 17.5px;
-    background-color: var(--dark);
-    padding: 2% 5%;
-    color: #ffffff;
-    cursor: pointer;
-}
-.add-note__submit:hover {
-    background-color: var(--mint);
-    color: var(--dark);
-}
-
-.add-note form {
+.add-note__form {
     display: flex;
     flex-flow: column;
     width: 60%;
-
+    opacity: 0;
 }
+
+.add-note.active > .add-note__form {
+    opacity: 1;
+    transition: opacity 0.4s ease 0.3s;
+}
+
 .add-note form label {
     display: flex;
     flex-flow: column;
@@ -272,23 +296,31 @@ small, .text_small {font-size: 0.833rem;}
     margin-bottom: 5%;
 }
 
-/*Styling Checkbox Inputs*/
+.add-note__submit {
+    border: none;
+    border-radius: 17.5px;
+    background-color: var(--dark);
+    padding: 2% 5%;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add-note__submit:hover {
+    background-color: var(--mint);
+    color: var(--dark);
+}
+
+/* Styling General Checkbox Inputs */
 .switch {
-    /*Styling*/
     display: flex;
     cursor: pointer;
 }
-/*General Styling to make Checkbox into Slider => style variables per Checkbox and also add switch class for genreal styles*/
-input[type="checkbox"]{
-   display: none;
+
+/* General Styling to make Checkbox into Slider => style variables per Checkbox and also add switch class for genreal styles */
+input[type="checkbox"] {
+    display: none;
 }
-input[type="checkbox"]:checked ~ .switch-fill {
-    background-color: var(--secondary-color);
-}
-input[type="checkbox"]:checked ~ .switch-fill::after {
-    left: calc(var(--width) - var(--heigth));
-    background-color: var(--main-color);
-}
+
 .switch-fill {
     position: relative;
     width: var(--width);
@@ -297,6 +329,7 @@ input[type="checkbox"]:checked ~ .switch-fill::after {
     background-color: var(--main-color);
     transition: all 0.2s;
 }
+
 .switch-fill::after {
     content: "";
     position: absolute;
@@ -308,12 +341,21 @@ input[type="checkbox"]:checked ~ .switch-fill::after {
     width: calc(var(--heigth) / 1.25);
     background-color: var(--secondary-color);
     border-radius: var(--border-radius);
-    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-/*Styling Radio Buttons*/
+input[type="checkbox"]:checked ~ .switch-fill {
+    background-color: var(--secondary-color);
+}
+
+input[type="checkbox"]:checked ~ .switch-fill::after {
+    left: calc(var(--width) - var(--heigth));
+    background-color: var(--main-color);
+}
+
+/* Styling Radio Buttons */
 input[type="radio"] {
-	display: none;
+    display: none;
 }
 
 input[type="radio"] + label {
@@ -326,44 +368,52 @@ input[type="radio"] + label {
 }
 
 input[type="radio"]:checked + label {
-	background-color: var(--secondary-color);
+    background-color: var(--secondary-color);
 }
 
-/*Input Type Text*/
-input[type="text"]{
+/* Input Type Text */
+input[type="text"] {
+    height: 3rem;
+    font-size: 2.074rem;
+    margin-bottom: 2%;
+    padding: 2%;
+    border: none;
+    background-color: var(--background);
+}
+
+/* Input Type Date */
+input[type="date"] {
     height: 30px;
     border: none;
     background-color: var(--background);
 }
 
-/*Input Type Date*/
-input[type="date"]{
-    height: 30px;
-    border: none;
-    background-color: var(--background);
-}
-input[type="date"]:placeholder {
-    font-family: Poppins;
+input[type="date"]::placeholder {
+    font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 1.75;
     color: var(--dark);
-    background-color:var(--background) ;
+    background-color: var(--background);
 }
-/*Input Type Select*/
+
+/* Input Type Select */
 select {
     height: 30px;
     border: none;
     background-color: var(--background);
 }
 
-/*Styling Textarea*/
+/* Styling Textarea */
 textarea {
     width: 100%;
     height: 200px;
+    margin-bottom: 2%;
+    padding: 2%;
     border: none;
     background-color: var(--background);
 }
-/*Styling Buttons done and edit */
+
+/* Styling Buttons done and edit */
 .todo-button {
     border: none;
     background: var(--dark);
@@ -378,9 +428,9 @@ textarea {
     border: 2px solid var(--dark);
 }
 
+/* Set Pointer Event of Icon to none so that it does not get selected when listening for js click */
 .todo-button > .material-icons {
     color: var(--light-grey);
-    /* Set Pointer Event of Icon to none so that it does not get selected when listening for js click */
     pointer-events: none;
 }
 
@@ -388,11 +438,39 @@ textarea {
     color: var(--dark);
 }
 
-.done{
-    text-decoration: underline;
+/* Styling for deleted Notes and transition while deleting note and editing note */
+.done-in-transition {
+    transform: translateX(-200%);
 }
 
-/*Styling Importance Icons / Text*/
+.edit-in-transition::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--grey);
+    animation-name: fadeOut;
+    animation-duration: 1000ms;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+
+[data-done="true"] {
+    background-color: var(--light-grey);
+    color: var(--grey);
+}
+
+[data-done="true"] .todo-buttons {
+    display: none;
+}
+
+/* Styling Importance Icons / Text */
 [data-value]::after {
     content: '!';
     font-size: 1.5rem;
@@ -415,4 +493,12 @@ textarea {
 [data-value="5"]::after {
     content: '!!!!!';
     color: var(--alert-very-high);
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+    background-color: var(--alert-very-high);
+    color: var(--light-grey);
 }

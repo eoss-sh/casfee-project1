@@ -6,7 +6,7 @@
   <title>Note App</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="styles/index.css">
-  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -31,10 +31,10 @@
     </section>
 
     <section class="controls">
-      <label class="switch filterdswitch-completed"><span class="material-icons">
+      <label class="switch filterswitch-completed"><span class="material-icons">
           check_circle
         </span>
-        <input type="checkbox" name="filterdswitch-completed" id="filterdswitch-completed">
+        <input type="checkbox" name="filterswitch-completed" id="filterswitch-completed">
         <div class="switch-fill"></div>
       </label>
       <span class="material-icons">
@@ -71,16 +71,16 @@
   <section class="add-note">
     <form class="add-note__form">
       <label class="add-note__titel">Titel der Notiz
-        <input type="text" name="new-note__titel" id="new-note__titel" required />
+        <input type="text" name="new-note__titel" id="new-note__titel">
       </label>
       <label class="add-note__desc">Notiz
-        <textarea name="new-note__desc" id="new-note__desc" required></textarea>
+        <textarea name="new-note__desc" id="new-note__desc"></textarea>
       </label>
       <label class="add-note__duedate">Fälligkeitsdatum
-        <input type="date" name="new-note__duedate" id="new-note__duedate" required />
+        <input type="date" name="new-note__duedate" id="new-note__duedate">
       </label>
       <label class="add-note__importance">Wichtigkeit
-        <select name="add-note__importance" id="new-note__importance" required>
+        <select name="add-note__importance" id="new-note__importance">
           <option value="1">!</option>
           <option value="2">!!</option>
           <option value="3">!!!</option>
