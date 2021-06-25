@@ -59,18 +59,21 @@ addNewButton.addEventListener('click', async (e) => {
         newNoteForm.reset();
         newNoteOverlay.classList.remove('active');
         openNewNoteOverlay.classList.remove('rotate');
-        await renderNotes();
+        await renderNotes(showDeleted, sortOrder);
     }
 });
-// Delete Note
+// Done and Undone Note
 // Set State of Note to Delete and rerender Notes
 todoElement.addEventListener('click', async (e) => {
+    const currentNoteId = e.target.parentElement.dataset.id;
+    const currentNote = e.target.parentElement.parentElement.parentElement;
     if (e.target.matches('.todo-done')) {
-        const currentNoteId = e.target.parentElement.dataset.id;
-        const currentNote = e.target.parentElement.parentElement.parentElement;
             currentNote.classList.add('done-in-transition');
-            await notesService.deleteNote(currentNoteId);
-            setTimeout(() => { renderNotes(); }, 1000);
+            await notesService.toggleDoneNote(currentNoteId, true);
+            setTimeout(() => { renderNotes(showDeleted, sortOrder); }, 1000);
+    } else if (e.target.matches('.todo-undone')) {
+        await notesService.toggleDoneNote(currentNoteId, false);
+        renderNotes(showDeleted, sortOrder);
     }
 });
 // Edit of Single Note
@@ -127,4 +130,4 @@ gridMode.addEventListener('change', () => {
     document.body.classList.toggle('grid-mode');
 });
 
-renderNotes();
+renderNotes(showDeleted, sortOrder);

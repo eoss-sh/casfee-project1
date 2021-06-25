@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/', notesController.createNote);
 router.get('/', notesController.loadNotes);
-router.delete('/:id', notesController.deleteNote);
+router.post('/:id', notesController.toggleDone);
 router.get('/:id', notesController.getNote);
 router.put('/:id', notesController.updateNote);
 

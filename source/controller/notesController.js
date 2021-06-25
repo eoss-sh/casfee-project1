@@ -6,8 +6,8 @@ export class NotesController {
         res.json(await noteStore.add(req.body.title, req.body.description, req.body.dueDate, req.body.importance));
     }
 
-    async deleteNote(req, res) {
-        res.json(await noteStore.delete(req.params.id));
+    async toggleDone(req, res) {
+        res.json(await noteStore.done(req.params.id, req.body.done));
     }
 
     async loadNotes(req, res) {

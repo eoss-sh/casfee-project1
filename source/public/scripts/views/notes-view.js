@@ -31,6 +31,7 @@ export function createTodosHtml(todos) {
                                             <button class="todo-button todo-edit"><span class="material-icons">edit</span></button>
                                             <button class="todo-button todo-done"><span class="material-icons">done</span></button>
                                             <button class="todo-button todo-save"><span class="material-icons">save</span></button>
+                                            <button class="todo-button todo-undone"><span class="material-icons">lock_open</span></button>
                                         </div>
                                     </div> 
                                 </li>`).join('');

@@ -245,7 +245,8 @@ Dates and Icons */
 .todo input,
 .todo textarea,
 .todo select,
-.todo .todo-save {
+.todo .todo-save,
+.todo .todo-undone {
     display: none;
 }
 
@@ -466,8 +467,13 @@ textarea {
     color: var(--grey);
 }
 
-[data-done="true"] .todo-buttons {
+[data-done="true"] .todo-done,
+[data-done="true"] .todo-edit {
     display: none;
+}
+
+[data-done="true"] .todo-undone {
+    display: block;
 }
 
 /* Styling Importance Icons / Text */

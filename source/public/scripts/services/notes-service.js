@@ -20,8 +20,8 @@ export default class NotesService {
         return fetchResponse;
     }
 
-    async deleteNote(id) {
-        const fetchResponse = await httpService.ajax('DELETE', `/notes/${id}`, undefined);
+    async toggleDoneNote(id, done) {
+        const fetchResponse = await httpService.ajax('POST', `/notes/${id}`, {done});
         return fetchResponse;
     }
 

@@ -23,8 +23,9 @@ export default class NoteStore {
             return await this.db.insert(note);
     }
 
-    async delete(id) {
-        const note = await this.db.update({_id: id}, {$set: {done: true}});
+    async done(id, done) {
+        console.log(done, typeof done);
+        const note = await this.db.update({_id: id}, {$set: {done: done}});
         return note;
     }
 
